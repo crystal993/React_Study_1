@@ -20,7 +20,7 @@ function App() {
     //
     var newArray = [...글제목]; //1.(deep copy를 사용) state의 복사본을 만든다.
     newArray[0] = '여자 코트 추천'; //2.0번째 인덱스의 내용을 바꾼다.
-    글제목변경(newArray);//3.변경함수에 저장
+    글제목변경(newArray.sort());//3.변경함수에 저장
   }
 
 
