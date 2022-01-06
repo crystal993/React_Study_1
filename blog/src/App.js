@@ -16,7 +16,7 @@ function App() {
       <div className="black-nav">
         <div>개발 Blog</div>
       </div>
-      <button onClick={ () => { 글제목변경(['여자코트추천','여자코트추천2','여자코트추천3']) }}>버튼</button>
+      <button onClick={ () => { 글제목변경(['여자코트추천',글제목[1],글제목[2]]) }}>버튼</button>
       <div className="list">
         <h3> { 글제목[0] } <span onClick={ () => { 따봉변경(따봉+1);}}>👍</span> {따봉} </h3>
         <p> 1월 05일 발행</p>
