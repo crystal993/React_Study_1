@@ -17,6 +17,17 @@ function App() {
   //   newArray[0] = '여자 코트 추천'; //2.0번째 인덱스의 내용을 바꾼다.
   //   글제목변경(newArray.sort());//3.변경함수에 저장
   // }
+  
+function onChange(e){
+  입력값변경(e.target.value);
+}
+
+const addPost = (e) => {
+  글제목.unshift(입력값);
+  let 새글제목 = [...글제목];
+  글제목변경(새글제목);
+  입력값변경('');
+}
 
 
   return (
@@ -38,6 +49,13 @@ function App() {
          )
         })
       }
+
+
+
+      <div className='publish'>
+        <input onChange={onChange}/>
+        <button onClick={addPost}>저장</button>
+      </div>
 
       {/* {입력값}
       <input onChange={ (e)=>{입력값변경(e.target.value)} } /> */}
