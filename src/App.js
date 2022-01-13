@@ -7,7 +7,7 @@ function App() {
 
   let [글제목,글제목변경] = useState(['리액트 공부','자바스크립트 공부','노드js 공부']); 
   let [따봉, 따봉변경] = useState(0);
-  let [modal, modal변경] = useState(false);
+  let [modal,modal변경] = useState(false);
 
   // function 제목바꾸기() {
   //   var newArray = [...글제목]; //1.(deep copy를 사용) state의 복사본을 만든다.
@@ -33,22 +33,24 @@ function App() {
         <hr/>
       </div>
       <div className="list">
-        <h3 onClick={()=>{modal변경(true)}}> { 글제목[2] } </h3>
+        <h3> { 글제목[2] } </h3>
         <p> 1월 07일 발행</p>
         <hr/>
       </div>
+       
+       <button onClick={()=>{modal변경(!modal)}}>버튼</button>
 
       {
-        modal === true
+        modal === true 
         ? <Modal></Modal>
-        : null // 텅 빈 html이라는 뜻
+        : null
       }
-       
 
     </div>
   );
 }
 
+// 모달 컴포넌트
 function Modal(){
   return (
     <div className='modal'>
