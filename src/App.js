@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css'; //css파일 import
 
+// App - 부모 컴포넌트
 function App() {
 
   let [글제목,글제목변경] = useState(['리액트 공부','자바스크립트 공부','노드js 공부']); 
@@ -22,27 +23,25 @@ function App() {
         <div>개발 Blog</div>
       </div>
       {/* <button onClick={ 제목바꾸기 }>버튼</button> */}
-      <div className="list">
-        <h3> { 글제목[0] } <span onClick={ () => { 따봉변경(따봉+1);}}>👍</span> {따봉} </h3>
-        <p> 1월 05일 발행</p>
-        <hr/>
-      </div>
-      <div className="list">
-        <h3> { 글제목[1] } </h3>
-        <p> 1월 06일 발행</p>
-        <hr/>
-      </div>
-      <div className="list">
-        <h3> { 글제목[2] } </h3>
-        <p> 1월 07일 발행</p>
-        <hr/>
-      </div>
-       
-       <button onClick={()=>{modal변경(!modal)}}>버튼</button>
+
+      {/* 블로그 리스트 map()이용해서 생성 */}
+      {
+        글제목.map((글)=>{
+          return ( 
+            <div className="list">
+              <h3> { 글 } <span onClick={ () => { 따봉변경(따봉+1);}}>👍</span> {따봉} </h3>
+              <p> 1월 05일 발행</p>
+              <hr/>
+            </div>
+         )
+        })
+      }
+
+       <button onClick={()=>{modal변경(!modal)}}>모달창 열고 닫기</button>
 
       {
         modal === true 
-        ? <Modal></Modal>
+        ? <Modal 글제목={글제목} ></Modal>
         : null
       }
 
@@ -50,11 +49,11 @@ function App() {
   );
 }
 
-// 모달 컴포넌트
-function Modal(){
+// 모달 컴포넌트 - 자식 컴포넌트
+function Modal(props){
   return (
     <div className='modal'>
-      <h2>제목</h2>
+      <h2>제목 { props.글제목[1] }</h2>
       <p>날짜</p>
       <p>상세내용</p>
     </div>
