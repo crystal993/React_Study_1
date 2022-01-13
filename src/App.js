@@ -9,6 +9,7 @@ function App() {
   let [글제목,글제목변경] = useState(['리액트 공부','자바스크립트 공부','노드js 공부']); 
   let [따봉, 따봉변경] = useState(0);
   let [modal,modal변경] = useState(false);
+  let [누른제목,누른제목변경] = useState(0);
 
   // function 제목바꾸기() {
   //   var newArray = [...글제목]; //1.(deep copy를 사용) state의 복사본을 만든다.
@@ -26,10 +27,10 @@ function App() {
 
       {/* 블로그 리스트 map()이용해서 생성 */}
       {
-        글제목.map((글)=>{
+        글제목.map((글, i)=>{
           return ( 
             <div className="list">
-              <h3> { 글 } <span onClick={ () => { 따봉변경(따봉+1);}}>👍</span> {따봉} </h3>
+              <h3 onClick={ ()=>{누른제목변경(i)} }> { 글 } <span onClick={ () => { 따봉변경(따봉+1);}}>👍</span> {따봉} </h3>
               <p> 1월 05일 발행</p>
               <hr/>
             </div>
@@ -37,11 +38,15 @@ function App() {
         })
       }
 
+      {/* <button onClick={ ()=>{누른제목변경(0)} }>버튼1</button>
+      <button onClick={ ()=>{누른제목변경(1)} }>버튼2</button>
+      <button onClick={ ()=>{누른제목변경(2)} }>버튼3</button> */}
+
        <button onClick={()=>{modal변경(!modal)}}>모달창 열고 닫기</button>
 
       {
         modal === true 
-        ? <Modal 글제목={글제목} ></Modal>
+        ? <Modal 글제목={글제목} 누른제목={누른제목}></Modal>
         : null
       }
 
@@ -53,7 +58,7 @@ function App() {
 function Modal(props){
   return (
     <div className='modal'>
-      <h2>제목 { props.글제목[1] }</h2>
+      <h2>{ props.글제목[props.누른제목] }</h2>
       <p>날짜</p>
       <p>상세내용</p>
     </div>
