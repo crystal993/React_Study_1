@@ -58,7 +58,7 @@ const addPost = (e) => {
       }
 
 
-
+      {/* 글발행 기능 */}
       <div className='publish'>
         <input onChange={onChange}/>
         <button onClick={addPost}>저장</button>
@@ -73,6 +73,9 @@ const addPost = (e) => {
 
        <button onClick={()=>{modal변경(!modal)}}>모달창 열고 닫기</button>
 
+       <Profile></Profile>
+
+      {/* 모달창 */}
       {
         modal === true 
         ? <Modal 글제목={글제목} 누른제목={누른제목}></Modal>
@@ -94,4 +97,34 @@ function Modal(props){
   )
 }
 
+
+class Profile extends React.Component {
+  constructor(){
+    super();
+    this.state = {name : 'Kim', age : 30}
+  }
+
+  changeName = () => {
+    this.setState( {name :'Park'} )
+  }
+
+  render(){
+    return (
+      <div>
+        <h3>프로필입니다.</h3>
+        <p>저는 {this.state.name} 입니다.</p>
+        <button onClick={ this.changeName }>버튼</button>
+      </div>
+    )
+  }
+}
+
+
+
+
+
+
+
 export default App;
+
+
